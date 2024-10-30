@@ -7,7 +7,12 @@ module.exports = {
   HOST,
   DIALECT,
   PORT,
-  dialectOptions: {}, // Eliminar las opciones de SSL
+  dialectOptions: {
+    ssl: {
+      require: true, // Activa SSL
+      rejectUnauthorized: false // Permite conexiones con certificados auto-firmados
+    }
+  },
   pool: {
     max: 5,
     min: 0,
