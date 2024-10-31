@@ -20,7 +20,7 @@ exports.findOne = (req, res) => {
       if (data) {
         res.send(data);
       } else {
-        res.status(404).send({ message: `No se encontró el pago/factura con id=${id}` });
+        res.status(404).send({ message: `No se encontro el pago con el id=${id}` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));
@@ -31,9 +31,9 @@ exports.update = (req, res) => {
   Facturacion.update(req.body, { where: { id_pay: id } })
     .then(num => {
       if (num == 1) {
-        res.send({ message: "Pago/Factura actualizado correctamente." });
+        res.send({ message: "Se a actualizado correctamente" });
       } else {
-        res.send({ message: `No se puede actualizar el pago/factura con id=${id}. Verifica los datos ingresados.` });
+        res.send({ message: `No se puedo actualizar el pago con el id=${id}` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));
@@ -41,12 +41,12 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Facturacion.update({ status_pay: 'CANCELADO' }, { where: { id_pay: id } })  // Soft delete cambiando el estado a CANCELADO
+  Facturacion.update({ status_pay: 'CANCELADO' }, { where: { id_pay: id } })
     .then(num => {
       if (num == 1) {
-        res.send({ message: "Pago/Factura cancelado (soft delete)." });
+        res.send({ message: "Se a canselado correctamente" });
       } else {
-        res.send({ message: `No se puede cancelar el pago/factura con id=${id}.` });
+        res.send({ message: `No se puede cancelar el id=${id}` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));

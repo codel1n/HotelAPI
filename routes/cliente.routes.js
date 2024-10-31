@@ -8,4 +8,4 @@ router.get('/:id', clienteController.findOne);
 router.put('/:id', clienteController.update);
 router.delete('/:id', clienteController.delete);
 
-module.exports = router;  // Exporta el router correctamente
+module.exports = router;

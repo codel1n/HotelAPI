@@ -20,7 +20,7 @@ exports.findOne = (req, res) => {
       if (data) {
         res.send(data);
       } else {
-        res.status(404).send({ message: `No se encontró la habitación con id ${id}` });
+        res.status(404).send({ message: `No se ah encontrado ninguna habitacion con el ${id}` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));
@@ -31,9 +31,9 @@ exports.update = (req, res) => {
   Room.update(req.body, { where: { id_room: id } })
     .then(num => {
       if (num == 1) {
-        res.send({ message: "Habitación actualizada correctamente." });
+        res.send({ message: "Se ah actualizado conrrectamente" });
       } else {
-        res.send({ message: `No se puede actualizar la habitación con id=${id}. Verifica los datos ingresados.` });
+        res.send({ message: `Error no se apodido actualizar id=${id}` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));
@@ -41,12 +41,12 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Room.update({ state_room: 'NO DISPONIBLE' }, { where: { id_room: id } }) // Soft delete
+  Room.update({ state_room: 'NO DISPONIBLE' }, { where: { id_room: id } })
     .then(num => {
       if (num == 1) {
-        res.send({ message: "Habitación eliminada (soft delete)." });
+        res.send({ message: "Habitacion eliminada" });
       } else {
-        res.send({ message: `No se puede eliminar la habitación con id=${id}.` });
+        res.send({ message: `Error no se a podido elinmar con el id=${id}.` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));

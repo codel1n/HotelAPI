@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-dotenv.config(); // Cargar variables de entorno desde el archivo .env
+dotenv.config();
 
 module.exports = {
   HOST: process.env.DB_HOST,

@@ -9,8 +9,8 @@ module.exports = {
   PORT,
   dialectOptions: {
     ssl: {
-      require: true, // Activa SSL
-      rejectUnauthorized: false // Permite conexiones con certificados auto-firmados
+      require: true,
+      rejectUnauthorized: false
     }
   },
   pool: {

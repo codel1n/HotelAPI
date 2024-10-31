@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const reservationController = require('../controllers/reservation.controller.js');
 
-router.post('/', reservationController.create);       // Crear una nueva reserva
-router.get('/', reservationController.findAll);       // Obtener todas las reservas
-router.get('/:id', reservationController.findOne);    // Obtener una reserva por id
-router.put('/:id', reservationController.update);     // Actualizar una reserva por id
-router.delete('/:id', reservationController.delete);  // Soft delete de una reserva
+router.post('/', reservationController.create);
+router.get('/', reservationController.findAll);       
+router.get('/:id', reservationController.findOne);
+router.put('/:id', reservationController.update);
+router.delete('/:id', reservationController.delete);
 
 module.exports = router;

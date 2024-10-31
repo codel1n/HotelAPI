@@ -41,7 +41,6 @@ module.exports = (sequelize, Sequelize) => {
     timestamps: false,
     hooks: {
       afterCreate: async (facturacion, options) => {
-        // Generación automática del invoice_number
         let prefix;
         const currentYear = new Date().getFullYear();
         
@@ -57,10 +56,8 @@ module.exports = (sequelize, Sequelize) => {
             break;
         }
 
-        // Generar el número de factura: FAC-<status>-<year>-<id>
         const invoiceNumber = `${prefix}-${currentYear}-${facturacion.id_pay.toString().padStart(3, '0')}`;
 
-        // Actualizamos el registro con el invoice_number generado
         await facturacion.update({ invoice_number: invoiceNumber });
       }
     }

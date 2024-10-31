@@ -14,11 +14,11 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false
       },
       date_in: {
-        type: Sequelize.DATEONLY,  // Usamos DATEONLY para solo la fecha
+        type: Sequelize.DATEONLY, 
         allowNull: false
       },
       date_out: {
-        type: Sequelize.DATEONLY,  // Usamos DATEONLY para solo la fecha
+        type: Sequelize.DATEONLY,  
         allowNull: false
       },
       type_room: {
@@ -45,7 +45,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: true
       }
     }, {
-      timestamps: false  // Sin campos de createdAt y updatedAt
+      timestamps: false
     });
   
     return Reservation;

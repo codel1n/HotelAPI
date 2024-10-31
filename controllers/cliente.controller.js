@@ -25,9 +25,9 @@ exports.update = (req, res) => {
   Cliente.update(req.body, { where: { id_huesped: id } })
     .then(num => {
       if (num == 1) {
-        res.send({ message: 'Cliente updated successfully.' });
+        res.send({ message: 'El cliente se actualizo correctamente' });
       } else {
-        res.send({ message: `Cannot update Cliente with id=${id}.` });
+        res.send({ message: `no se puede actualizar con el id=${id}.` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));
@@ -38,9 +38,9 @@ exports.delete = (req, res) => {
   Cliente.update({ state: 'inactive' }, { where: { id_huesped: id } })
     .then(num => {
       if (num == 1) {
-        res.send({ message: 'Cliente deleted successfully (soft delete).' });
+        res.send({ message: 'Cliente eliminado correctamente' });
       } else {
-        res.send({ message: `Cannot delete Cliente with id=${id}.` });
+        res.send({ message: `no se pudo eliminra con el id=${id}.` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));

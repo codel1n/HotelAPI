@@ -20,7 +20,7 @@ exports.findOne = (req, res) => {
       if (data) {
         res.send(data);
       } else {
-        res.status(404).send({ message: `Service not found with id=${id}` });
+        res.status(404).send({ message: `Servicio no encontrado id=${id}` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));
@@ -31,9 +31,9 @@ exports.update = (req, res) => {
   Service.update(req.body, { where: { id_service: id } })
     .then(num => {
       if (num == 1) {
-        res.send({ message: 'Service updated successfully.' });
+        res.send({ message: 'Servicio actualizado correctamente' });
       } else {
-        res.send({ message: `Cannot update Service with id=${id}.` });
+        res.send({ message: `No se pudo actualizar el servico con el id=${id}` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));
@@ -44,9 +44,9 @@ exports.delete = (req, res) => {
   Service.update({ availability: false }, { where: { id_service: id } })
     .then(num => {
       if (num == 1) {
-        res.send({ message: 'Service deleted successfully (soft delete).' });
+        res.send({ message: 'Servicio Eliminado correctamente' });
       } else {
-        res.send({ message: `Cannot delete Service with id=${id}.` });
+        res.send({ message: `No sea podido eliminar el servicio id=${id}.` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));

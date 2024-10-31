@@ -7,7 +7,7 @@ exports.create = (req, res) => {
     .catch(err => {
       if (err.name === 'SequelizeUniqueConstraintError') {
         res.status(400).send({
-          message: "El número de DPI ya existe en el sistema. Por favor, utiliza un número de DPI único."
+          message: "Solo puede existir un unico DPI"
         });
       } else {
         res.status(500).send({ message: err.message });
@@ -29,7 +29,7 @@ exports.findOne = (req, res) => {
       if (data) {
         res.send(data);
       } else {
-        res.status(404).send({ message: `No se encontró el empleado con id=${id}` });
+        res.status(404).send({ message: `No hay algun empleado con el id=${id}` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));
@@ -40,9 +40,9 @@ exports.update = (req, res) => {
   Employee.update(req.body, { where: { id_colab: id } })
     .then(num => {
       if (num == 1) {
-        res.send({ message: "Empleado actualizado correctamente." });
+        res.send({ message: "Se ah actualizado el emplado correctamente" });
       } else {
-        res.send({ message: `No se puede actualizar el empleado con id=${id}. Verifica los datos ingresados.` });
+        res.send({ message: `No se puede actualizar el empleado con id=${id}` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));
@@ -50,12 +50,12 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Employee.update({ status: 'INACTIVO' }, { where: { id_colab: id } })  // Soft delete cambiando status a INACTIVO
+  Employee.update({ status: 'INACTIVO' }, { where: { id_colab: id } })
     .then(num => {
       if (num == 1) {
-        res.send({ message: "Empleado eliminado (soft delete)." });
+        res.send({ message: "Empleado eliminado correctamente" });
       } else {
-        res.send({ message: `No se puede eliminar el empleado con id=${id}.` });
+        res.send({ message: `No se puede eliminar el empleado con id=${id}` });
       }
     })
     .catch(err => res.status(500).send({ message: err.message }));

@@ -14,7 +14,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false
       },
       state_room: {
-        type: Sequelize.ENUM('DISPONIBLE', 'OCUPADA', 'RESERVADA', 'MANTENIMIENTO', 'NO DISPONIBLE'),  // Agregamos "NO DISPONIBLE" al ENUM
+        type: Sequelize.ENUM('DISPONIBLE', 'OCUPADA', 'RESERVADA', 'MANTENIMIENTO', 'NO DISPONIBLE'),
         defaultValue: 'DISPONIBLE'
       },
       capacity: {

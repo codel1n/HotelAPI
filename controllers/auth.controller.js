@@ -8,7 +8,7 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ where: { username, password } });
 
     if (!user) {
-      return res.status(404).send({ message: 'Credenciales incorrectas. Usuario o contraseña no válidos.' });
+      return res.status(404).send({ message: 'USSUARIO INVALIDO' });
     }
 
     res.status(200).send({
